@@ -1,0 +1,23 @@
+﻿@model Pokedex.Model.Pokemon
+
+@{
+    ViewData["Title"] = "Pokemon";
+}
+
+<h1>@Model.Name</h1>
+
+<p>@Model.Species.Name</p>
+
+<p>@Model.Height</p>
+
+<p>@Model.Weight</p>
+
+@foreach(var type in Model.Types)
+{
+    <p>@type.Type.Name</p>
+}
+
+@foreach(var move in Model.Moves)
+{
+    <p>@move.Move.Name</p>
+}
