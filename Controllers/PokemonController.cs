@@ -9,7 +9,8 @@ namespace Pokedex.Web.Controllers
     {
         public IActionResult Index(int id = 1)
         {
-            var model = DataFetcher.GetApiObject<Pokemon>(new Uri("http://pokeapi.co/api/v2/pokemon/" + id)).Result;
+            var apiModel = DataFetcher.GetApiObject<Pokemon>(new Uri("http://pokeapi.co/api/v2/pokemon/" + id)).Result;
+            var model = new Models.Pokemon(apiModel);
             return View(model);
         }
     }
