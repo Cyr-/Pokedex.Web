@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using Pokedex.Pokeapi.Pokemon;
+using Pokedex.Logic.Web;
 
 namespace Pokedex.Web.Controllers
 {
@@ -7,6 +10,13 @@ namespace Pokedex.Web.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Pokemon(int id = 1)
+        {
+            var apiModel = DataFetcher.GetApiObject<Pokemon>(new Uri("http://pokeapi.co/api/v2/pokemon/" + id)).Result;
+            var model = new Models.Pokemon(apiModel);
+            return View(model);
         }
 
         public IActionResult Error()
