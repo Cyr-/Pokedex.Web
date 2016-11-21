@@ -1,9 +1,5 @@
 ﻿@model Pokedex.Web.Models.Pokemon
 
-@{
-    ViewData["Title"] = "Pokemon";
-}
-
 <h1>@Model.Name</h1>
 
 <section id="pokedex-data">
@@ -11,14 +7,11 @@
     <p>@Model.Number</p>
 
     <p>Type:</p>
-    @foreach (Pokedex.Web.Models.Type type in Model.Types)
+    @foreach (var type in Model.Types)
     {
         <p>@type.Name</p>
     }
 
     <p>Species:</p>
-    @foreach (string species in Model.Species)
-    {
-        <p>@species</p>
-    }
+    <p>@Model.Species</p>
 </section>
